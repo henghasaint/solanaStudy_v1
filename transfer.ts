@@ -51,7 +51,7 @@ console.log(
 );
 // console.log(`Transaction signature is ${signature} !`);
 console.log(`You can view your transaction on the Solana Explorer at:\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`)
-
+// Important note:
 // In Solana, accounts need to maintain a minimum balance to remain rent - exempt.
 // This minimum balance is determined by the account's data size and the current rent exemption threshold. 
 // If an account's balance falls below this threshold, it is not rent-exempt, and the network can purge it.
