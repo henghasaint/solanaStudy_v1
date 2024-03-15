@@ -49,8 +49,8 @@ const signature = await sendAndConfirmTransaction(connection, transaction, [
 console.log(
     `💸 Finished! Sent ${LAMPORTS_TO_SEND} to the address ${toPubkey}. `
 );
-console.log(`Transaction signature is ${signature} !`);
-
+// console.log(`Transaction signature is ${signature} !`);
+console.log(`You can view your transaction on the Solana Explorer at:\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`)
 
 // In Solana, accounts need to maintain a minimum balance to remain rent - exempt.
 // This minimum balance is determined by the account's data size and the current rent exemption threshold. 
