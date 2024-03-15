@@ -32,7 +32,7 @@ console.log(
 );
 const transaction = new Transaction();
 
-const LAMPORTS_TO_SEND = 6;
+const LAMPORTS_TO_SEND = 5000;
 
 const sendSolInstruction = SystemProgram.transfer({
     fromPubkey: senderKeypair.publicKey,
@@ -49,7 +49,7 @@ const signature = await sendAndConfirmTransaction(connection, transaction, [
 console.log(
     `💸 Finished! Sent ${LAMPORTS_TO_SEND} to the address ${toPubkey}. `
 );
-console.log(`Transaction signature is ${signature}!`);
+console.log(`Transaction signature is ${signature} !`);
 
 
 // In Solana, accounts need to maintain a minimum balance to remain rent - exempt.
