@@ -8,6 +8,7 @@ import {
 } from "@solana/web3.js";
 import "dotenv/config";
 import { getKeypairFromEnvironment } from "@solana-developers/helpers";
+import base58 from "bs58";
 
 const suppliedToPubkey = process.argv[2] || null;
 
@@ -15,9 +16,13 @@ if (!suppliedToPubkey) {
     console.log(`Please provide a public key to send to`);
     process.exit(1);
 }
-const senderKeypair = getKeypairFromEnvironment("SECRET_KEY1");
+const senderKeypair = getKeypairFromEnvironment("SECRET_KEY2");
 console.log(`senderKeypair PubKey: ${senderKeypair.publicKey}`);
 console.log(`suppliedToPubkey: ${suppliedToPubkey}`);
+// Encodes the private key as a Base58 string
+const privKeyBase58 = base58.encode(senderKeypair.secretKey);
+console.log(`senderKeypair PrivKey: ${privKeyBase58}`);
+
 const toPubkey = new PublicKey(suppliedToPubkey);
 const connection = new Connection("https://api.devnet.solana.com", "confirmed");
 
@@ -51,7 +56,7 @@ console.log(
 );
 // console.log(`Transaction signature is ${signature} !`);
 console.log(`You can view your transaction on the Solana Explorer at:\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`)
-// Important note:
+// // Important note:
 // In Solana, accounts need to maintain a minimum balance to remain rent - exempt.
 // This minimum balance is determined by the account's data size and the current rent exemption threshold. 
 // If an account's balance falls below this threshold, it is not rent-exempt, and the network can purge it.
